@@ -1,4 +1,4 @@
-# Unity Item Nudge
+# Unity Inventory System
 
 [![LICENSE](https://img.shields.io/npm/l/react)](https://github.com/LorisJunior/Unity_2D_RPG/blob/main/LICENSE) 
 
