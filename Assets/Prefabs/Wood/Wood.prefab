@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3950149064773105909
+--- !u!1001 &7447292042787111127
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,43 +10,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 518872964802643813, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_Size.x
-      value: 0.775694
+      value: 0.95825815
       objectReference: {fileID: 0}
     - target: {fileID: 518872964802643813, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_Size.y
-      value: 0.5711291
+      value: 0.5101639
       objectReference: {fileID: 0}
     - target: {fileID: 518872964802643813, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_Offset.x
-      value: 0.09343678
+      value: 0.24191332
       objectReference: {fileID: 0}
     - target: {fileID: 518872964802643813, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_Offset.y
-      value: -0.57363296
-      objectReference: {fileID: 0}
-    - target: {fileID: 518872964802643813, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      value: 0.07987529
       objectReference: {fileID: 0}
     - target: {fileID: 1655064503861359220, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 927989986, guid: 4b4b67dc85739cc40807267706b755e7, type: 3}
+      objectReference: {fileID: 660284586, guid: 4b4b67dc85739cc40807267706b755e7, type: 3}
     - target: {fileID: 1655064503861359220, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3006660262292611197, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
-      propertyPath: m_SortAtRoot
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3620042630463635938, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.28
+      value: -1.06
       objectReference: {fileID: 0}
     - target: {fileID: 3620042630463635938, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.17
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 3620042630463635938, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_LocalPosition.z
@@ -82,19 +74,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4074991627423649668, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: itemCode
-      value: 10004
+      value: 10005
       objectReference: {fileID: 0}
     - target: {fileID: 4372799226853934053, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.12
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 4372799226853934053, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.85
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 7450172331971892124, guid: aadc2a60310a4004e83fdc69669ae373, type: 3}
       propertyPath: m_Name
-      value: Stone
+      value: Wood
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
