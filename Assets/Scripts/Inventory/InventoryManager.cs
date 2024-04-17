@@ -16,27 +16,13 @@ public class InventoryManager : SingletonMonoBehaviour<InventoryManager>
         InitializeInventoryDictionary();
     }
 
-    public void AddItem(int itemCode)
-    {
-        ItemDetails item = FindItem(itemCode);
 
-        if (item != null)
-        {
-            if (item.canBePickedUp)
-            {
-                inventoryDictionary[itemCode].itemQuantity++;
 
-                DebugPrintInventory();
-            }
-        }
-        else
-        {
-            Debug.Log("Item Code not exist");
-        }
+    #region Initialize Dictionaries
 
-    }
 
-    private void InitializeItemDetailsDictionary()
+
+        private void InitializeItemDetailsDictionary()
     {
         itemDetailsDictionary = new Dictionary<int, ItemDetails>();
 
@@ -49,14 +35,43 @@ public class InventoryManager : SingletonMonoBehaviour<InventoryManager>
     private void InitializeInventoryDictionary()
     {
         inventoryDictionary = new Dictionary<int, InventoryItem>();
+    }
 
-        foreach (ItemDetails itemDetails in itemList.itemDetails)
+    #endregion
+
+
+
+    #region Inventory Functions
+
+
+
+    public void AddItem(int itemCode)
+    {
+        ItemDetails item = FindItem(itemCode);
+
+        if(item == null)
         {
-            inventoryDictionary.Add(itemDetails.itemCode, new InventoryItem(itemDetails.itemCode, 0));
+            Debug.Log("Item Code not exist");
+            return;
+        }
+        
+        InventoryItem inventoryItem = FindItemInInventory(itemCode);
+
+        if(inventoryItem != null)
+        {
+            inventoryDictionary[itemCode].itemQuantity++;
+
+            EventManager.CallUpdateInventoryEvent(inventoryDictionary);
+        }
+        else
+        {
+            inventoryDictionary.Add(itemCode, new InventoryItem(itemCode, 1));
+
+            EventManager.CallUpdateInventoryEvent(inventoryDictionary);
         }
     }
 
-    private ItemDetails FindItem(int itemCode)
+    public ItemDetails FindItem(int itemCode)
     {
         if (itemDetailsDictionary.ContainsKey(itemCode))
         {
@@ -66,20 +81,29 @@ public class InventoryManager : SingletonMonoBehaviour<InventoryManager>
         return null;
     }
 
+    private InventoryItem FindItemInInventory(int itemCode)
+    {
+        if (inventoryDictionary.ContainsKey(itemCode))
+        {
+            return inventoryDictionary[itemCode];
+        }
+
+        return null;
+    }
+
     private void DebugPrintInventory()
     {
-        foreach (var (key, inventoryItem) in inventoryDictionary)
+        foreach (var (itemCode, inventoryItem) in inventoryDictionary)
         {
-            if (inventoryItem.itemQuantity > 0)
-            {
-                ItemDetails itemDetails = FindItem(inventoryItem.itemCode);
+            ItemDetails itemDetails = FindItem(itemCode);
 
-                Debug.Log(
-                    "Item Code: " + inventoryItem.itemCode +
-                    " | Item Description: " + itemDetails.itemDescription +
-                    " | Item Quantity: " + inventoryItem.itemQuantity);
-            }
+            Debug.Log(
+                "Item Code: " + itemCode +
+                " | Item Description: " + itemDetails.itemDescription +
+                " | Item Quantity: " + inventoryItem.itemQuantity);
         }
         Debug.Log("*******************************************************************************************");
     }
+
+    #endregion
 }
