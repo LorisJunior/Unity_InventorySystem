@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class UIInventoryBar : MonoBehaviour
 {
+    public GameObject inventoryDraggedItem;
+
     [SerializeField] private Sprite transparent32x32;
     [SerializeField] private UIInventorySlot[] inventorySlots;
 
@@ -16,25 +18,24 @@ public class UIInventoryBar : MonoBehaviour
         EventManager.UpdateInventoryEvent -= UpdateInventory;
     }
 
-    private void UpdateInventory(Dictionary<int, InventoryItem> inventoryDictionary)
+    private void UpdateInventory(List<InventoryItem> inventoryList)
     {
         ClearInventorySlots();
 
-        int count = 0;
+        int slotsCount = 0;
 
-        foreach (var (itemCode, inventoryItem) in inventoryDictionary)
+        foreach (var inventoryItem in inventoryList)
         {
-            if(count > inventorySlots.Length)
+            if(slotsCount == inventorySlots.Length)
                 break;
 
-            ItemDetails itemDetail = InventoryManager.Instance.FindItem(itemCode);
+            ItemDetails itemDetail = InventoryManager.Instance.FindItem(inventoryItem.itemCode);
 
-            var inventorySlot = inventorySlots[count];
+            UIInventorySlot inventorySlot = inventorySlots[slotsCount];
 
-            inventorySlot.InventoryImage.sprite = itemDetail.itemSprite;
-            inventorySlot.textMeshProUGUI.text = $"x{inventoryItem.itemQuantity}";
+            inventorySlot.SetInventorySlot(itemDetail.itemSprite, $"x{inventoryItem.itemQuantity}", itemDetail, inventoryItem.itemQuantity);
 
-            count++;
+            slotsCount++;
         }
     }
 
@@ -42,9 +43,7 @@ public class UIInventoryBar : MonoBehaviour
     {
         foreach (var inventorySlot in inventorySlots)
         {
-            inventorySlot.inventorySelectedImage.color = new Color(1, 1, 1, 0);
-            inventorySlot.InventoryImage.sprite = transparent32x32;
-            inventorySlot.textMeshProUGUI.text = string.Empty;
+            inventorySlot.ClearInventorySlot(transparent32x32);
         }
     }
 }

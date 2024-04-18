@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public static class EventManager
 {
-    public static event Action<Dictionary<int, InventoryItem>> UpdateInventoryEvent;
+    public static event Action<List<InventoryItem>> UpdateInventoryEvent;
 
-    public static void CallUpdateInventoryEvent(Dictionary<int, InventoryItem> inventoryDictionary)
+    public static void CallUpdateInventoryEvent(List<InventoryItem> inventoryDictionary)
     {
         if (UpdateInventoryEvent != null)
         {
